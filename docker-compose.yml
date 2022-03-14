@@ -14,3 +14,13 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  tgbot:
+    container_name: bot
+    build:
+      context: .
+    command: python app.py
+    restart: always
+
+    env_file:
+      - ".env"
