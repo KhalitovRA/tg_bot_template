@@ -3,7 +3,7 @@ from asyncio import sleep
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from data.config import ADMINS
+from config import ADMINS
 from loader import dp, _, bot
 from states.shop_states import NewItem, Mailing
 from database import Item, User
@@ -27,7 +27,7 @@ async def enter_name(message: types.Message, state: FSMContext):
     item = Item()
     item.name = name
     await message.answer(_('Название: {name}'
-                           '\nПришлите мне фотографию товара (не документ) или нажмите /cancel'.format(name=name)))
+                           '\nПришлите мне фотографию товара (не документ) или нажмите /cancel').format(name=name))
     await NewItem.Photo.set()
     await state.update_data(item=item)
 
@@ -91,7 +91,7 @@ async def confirm(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     item: Item = data.get('item')
     await item.create()
-    await call.message.answer('Товар удачно создан!')
+    await call.message.answer(_('Товар удачно создан!'))
     await state.reset_state()
 
 

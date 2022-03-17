@@ -1,12 +1,10 @@
-import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-from data import config
+import config
 from languge_middleware import setup_middleware
-from sql import create_pool
 
 logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
                     level=logging.INFO,

@@ -9,7 +9,7 @@ from aiogram.utils.callback_data import CallbackData
 
 import database
 from states import shop_states
-from data.config import lp_token, ADMINS
+from config import lp_token, ADMINS
 from loader import dp, bot, _
 
 
@@ -45,12 +45,15 @@ async def register_user(message: Message):
         ]
     )
 
-    text = _('Приветствую Вас!!\n'
-             'Сейчас в базе {count_users} человек\n'
-             '\n'
-             'Ваша реферальная ссылка {bot_link}\n'
-             'Проверить реферралов можно по команде: /referrals\n'
-             'Просмотреть товары: /items').format(count_users=count_users, bot_link=bot_link)
+    text = _("Приветствую вас!!\n"
+             "Сейчас в базе {count_users} человек!\n"
+             "\n"
+             "Ваша реферальная ссылка: {bot_link}\n"
+             "Проверить рефералов можно по команде: /referrals\n"
+             "Просмотреть товары: /items").format(
+        count_users=count_users,
+        bot_link=bot_link
+    )
     if message.from_user.id == ADMINS:
         text += _('\n'
                   'Добавить новый товар: /add_item')
@@ -164,7 +167,7 @@ async def cancel_purchase(call: CallbackQuery, state: FSMContext):
 @dp.callback_query_handler(text_contains='change', state=shop_states.Purchase.Approval)
 async def change_purchase(call: CallbackQuery, state: FSMContext):
     await call.message.edit_reply_markup()
-    await call.message.answer(_('Введите количество товара заново'))
+    await call.message.answer(_("Введите количество товара заново."))
     await shop_states.Purchase.EnterQuantity.set()
 
 

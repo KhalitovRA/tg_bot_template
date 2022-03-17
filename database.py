@@ -5,7 +5,7 @@ from sqlalchemy import (Column, Integer, BigInteger, String, Sequence, TIMESTAMP
 from sqlalchemy import sql
 from gino.schema import GinoSchemaVisitor
 
-from data.config import PG_PASS, PG_USER, host
+from config import PG_PASS, PG_USER, host
 
 db = Gino()
 
