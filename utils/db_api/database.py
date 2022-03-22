@@ -96,5 +96,4 @@ async def create_db():
     await db.set_bind(f'postgresql://{PG_USER}:{PG_PASS}@{host}/gino')
 
     db.gino: GinoSchemaVisitor
-    await db.gino.drop_all()
     await db.gino.create_all()

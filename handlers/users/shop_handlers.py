@@ -7,7 +7,7 @@ from aiogram.types import (Message, InlineKeyboardButton, InlineKeyboardMarkup,
                            CallbackQuery, LabeledPrice, PreCheckoutQuery)
 from aiogram.utils.callback_data import CallbackData
 
-import database
+from utils.db_api import database
 from states import shop_states
 from config import lp_token, ADMINS
 from loader import dp, bot, _

@@ -6,7 +6,7 @@ from aiogram.dispatcher import FSMContext
 from config import ADMINS
 from loader import dp, _, bot
 from states.shop_states import NewItem, Mailing
-from database import Item, User
+from utils.db_api.database import Item, User
 
 
 @dp.message_handler(user_id=ADMINS, commands=['cancel'], state=NewItem)
